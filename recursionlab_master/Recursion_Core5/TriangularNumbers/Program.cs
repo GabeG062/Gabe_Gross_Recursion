@@ -6,7 +6,25 @@ namespace TriangularNumbers
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            int n = 10;
+            Console.WriteLine("n is equal to " + n);
+            PrintTriangularNumbers(n);
+        }
+
+        static void PrintTriangularNumbers(int n)
+        {
+            int triangNumber = n;
+            int tirangCarry = 0;
+            int Triangular = 0;
+            if (n == 0) return;
+            while (triangNumber != 0)
+            {
+                tirangCarry += triangNumber;
+                triangNumber--;
+            }
+            Triangular = tirangCarry;
+            Console.WriteLine(Triangular);
+            PrintTriangularNumbers(n - 1);
         }
     }
 }
