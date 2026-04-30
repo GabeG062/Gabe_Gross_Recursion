@@ -6,41 +6,78 @@ namespace FibonacciNumbers
     {
         static void Main(string[] args)
         {
-            int n = 2;
+            int n = 10;
             Console.WriteLine("n is equal to " + n);
             PrintFibonacciNumbers(n);
         }
 
-        static void PrintFibonacciNumbers(int n)
+        static int PrintFibonacciNumbers(int n)
         {
-            int fiboNumber = n;
-            int fiboCarry = 0;
-            int fiboNegOne = n-1;
-            int fiboNegTwo = n-2;
             int fibonacci = 0;
-            if (n == 0) return;
-            while (fiboNumber != 0)
+            int count = 0;
+            
+            if (n == 0)  return fibonacci;
+            while (count < n)
             {
-                while (fiboNumber > 2)
+                if (n == 1) // 1
                 {
-                    fiboCarry += fiboNegOne;
-                    fiboCarry += fiboNegTwo;
-                    fiboNumber--;
+                    fibonacci = 1;
+                    break;
                 }
-                while (fiboNumber == 2)
+                else if (n == 2) // 1
                 {
-                    fiboCarry = 1;
-                    fiboNumber--;
+                    fibonacci = 1;
+                    break;
                 }
-                while (fiboNumber == 1)
+                else if (n == 3) // 2
                 {
-                    fiboCarry = 1;
-                    fiboNumber--;
+                    fibonacci = 1 + 1;
+                    break;
                 }
+                else // 4 = 3, 5 = 5
+                {
+                    int fiboNegOne = PrintFibonacciNumber(n-1);
+                    int fiboNegTwo = PrintFibonacciNumber(n-2);
+                    fibonacci = fiboNegOne + fiboNegTwo;
+                }
+                count++;
             }
-            fibonacci = fiboCarry;
             Console.WriteLine(fibonacci);
             PrintFibonacciNumbers(n - 1);
+            return fibonacci;
+        }
+        static int PrintFibonacciNumber(int n)
+        {
+            int fibonacci = 0;
+            int count = 0;
+            if (n == 0)  return fibonacci;
+            while (count < n)
+            {
+                if (n == 1) // 1
+                {
+                    fibonacci = 1;
+                    break;
+                }
+                else if (n == 2) // 1
+                {
+                    fibonacci = 1;
+                    break;
+                }
+                else if (n == 3) // 2
+                {
+                    fibonacci = 1 + 1;
+                    break;
+                }
+                else // 4 = 3, 5 = 5
+                {
+                    int fiboNegOne = PrintFibonacciNumber(n-1);
+                    int fiboNegTwo = PrintFibonacciNumber(n-2);
+                    
+                    fibonacci = fiboNegOne + fiboNegTwo;
+                }
+                count++;
+            }
+            return fibonacci;
         }
     }
 }
