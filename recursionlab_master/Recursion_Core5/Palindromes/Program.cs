@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Palindromes
 {
@@ -9,6 +10,9 @@ namespace Palindromes
         {
             Console.WriteLine("Insert a word");
             string s = Console.ReadLine();
+            s = s.ToLower();
+            s = s.Replace(" ", "");
+            s = Regex.Replace(s, @"[^\w\d\s]", "");
             bool isTrue = PrintPalindrome(s);
             Console.WriteLine(isTrue);
             
